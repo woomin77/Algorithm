@@ -29,17 +29,39 @@ public class BOJ2805 {
     }
 
     //나무를 H 높이로 잘랐을 경우, 원하는 길이 M을 얻을 수 있으면 YES, 없으면 NO
-    static void determine() {
+    static boolean determine(long h) {
 
+        long sum = 0;
+        for (int i = 1; i <= N; i++) {
+            if(trees[i] > h)
+                sum += trees[i] - h;
+        }
+
+        if (sum >= M) return true;
+
+        return false;
     }
 
     static void solution() {
         long l=0, r=2000000000;
+        int result = 0;
 
-        
+        while (l <= r) {
+            int mid = (int) (l + r) / 2;
+            if (determine(mid)) {
+                result = mid;
+                l = mid + 1;
+            } else {
+                r = mid - 1;
+            }
+
+        }
+
+        System.out.println(result);
     }
 
-    public static void main(String[] args) {
-
+    public static void main(String[] args) throws IOException {
+        input();
+        solution();
     }
 }

@@ -37,9 +37,7 @@ public class BOJ2805 {
                 sum += trees[i] - h;
         }
 
-        if (sum >= M) return true;
-
-        return false;
+        return sum >= M;
     }
 
     static void solution() {

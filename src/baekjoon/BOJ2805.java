@@ -29,7 +29,9 @@ public class BOJ2805 {
     }
 
     //나무를 H 높이로 잘랐을 경우, 원하는 길이 M을 얻을 수 있으면 YES, 없으면 NO
-    static void determine()
+    static void determine() {
+
+    }
 
     static void solution() {
         long l=0, r=2000000000;

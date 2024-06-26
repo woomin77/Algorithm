@@ -40,6 +40,7 @@ public class BOJ2805 {
         return sum >= M;
     }
 
+    //l ~ r 까지 이분탐색 진행!
     static void solution() {
         long l=0, r=2000000000;
         int result = 0;

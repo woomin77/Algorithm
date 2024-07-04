@@ -8,12 +8,11 @@ public class BOJ16472 {
 
     static int N, kind;
     static String str;
-    static int[] A, cnt;
+    static int[] cnt;
 
     static void input() throws IOException {
         BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
         N = Integer.parseInt(br.readLine());
-        A = new int[N+1];
         cnt = new int[26];
         str = br.readLine();
     }
@@ -27,24 +26,28 @@ public class BOJ16472 {
     }
 
     static void solution() {
-        int len = str.length(), result = 0;
-        for (int R = 0, L = 0; R < len; R++) {
-            add(str.charAt(R));
+        int result=0, len = str.length(), l=0;
 
-            kind = 0;
-            while (true) {
-                for (int i = 0; i < 26; i++) {
+        for (int r = 0; r < len; r++) {
+            add(str.charAt(r));  //r번째 인덱스의 알파벳 추가
+
+            while (l<=r) {
+                //cnt 배열에 알파벳이 몇 종류 들어가있는지 계산
+                int kind = 0;
+                for (int i = 0; i < 26; i++)   {
                     if(cnt[i] != 0) kind++;
                 }
-                if(kind <= N) break;
-                remove(str.charAt(L));
-                L++;
+                if(kind <= N) break;  //알파벳 종류가 N보다 작으면 break(r 인덱스 이동)
+
+                //N을 만족할 만큼 L 인덱스를 앞으로 이동
+                remove(str.charAt(l));
+                l++;
             }
 
-            result = Math.max(result, R - L + 1);
-
+            result = Math.max(result, r - l + 1);
         }
         System.out.println(result);
+
     }
 
     public static void main(String[] args) throws IOException {

@@ -26,7 +26,7 @@ public class BOJ1260_List {
         adj = new ArrayList[N + 1];
         visit = new boolean[N + 1];
 
-        //객체 배열 초기화
+        //객체 리스트 초기화
         for (int i = 1; i <= N; i++) {
             adj[i] = new ArrayList<>();
         }
@@ -83,9 +83,7 @@ public class BOJ1260_List {
                 visit[y] = true;
             }
         }
-
     }
-
 
     static void solution() {
         dfs(V);

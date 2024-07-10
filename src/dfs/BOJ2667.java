@@ -26,7 +26,6 @@ public class BOJ2667 {
         list = new String[N];
 
         for (int i = 0; i < N; i++) {
-//            list[i] = new String();
             list[i] = br.readLine();
         }
     }

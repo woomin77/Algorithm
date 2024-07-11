@@ -64,5 +64,5 @@ public class BOJ2110 {
         input();
         solution();
     }
-    
+
 }

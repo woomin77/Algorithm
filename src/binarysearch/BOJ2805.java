@@ -1,4 +1,4 @@
-package baekjoon;
+package binarysearch;
 
 
 import java.io.BufferedReader;

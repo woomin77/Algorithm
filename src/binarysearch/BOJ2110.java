@@ -1,4 +1,4 @@
-package baekjoon;
+package binarysearch;
 
 import java.io.BufferedReader;
 import java.io.IOException;
@@ -64,13 +64,5 @@ public class BOJ2110 {
         input();
         solution();
     }
-
-    /**
-     * 5 3
-     * 1
-     * 2
-     * 8
-     * 4
-     * 9
-     */
+    
 }

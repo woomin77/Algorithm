@@ -69,9 +69,11 @@ public class BOJ2251 {
         while (!que.isEmpty()) {
             State st = que.poll();
 
+            //A가 0일 경우 C의 상태를 저장
             if (st.stateList[0] == 0) {
                 resultList.add(st.stateList[2]);
             }
+
             for (int from = 0; from < 3; from++) {
                 for (int to = 0; to < 3; to++) {
                     if(from==to) continue;

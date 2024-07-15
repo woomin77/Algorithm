@@ -47,17 +47,21 @@ public class BOJ2178 {
         dist[x][y] = 1;
 
         while (!que.isEmpty()) {
-            int nx = que.poll();
-            int ny = que.poll();
+            x = que.poll();
+            y = que.poll();
 
             for (int i = 0; i < 4; i++) {
-                nx = nx + dir[i][0];
-                ny = ny + dir[i][1];
+                int nx = x + dir[i][0];
+                int ny = y + dir[i][1];
 
                 if (nx < 0 || ny < 0 || nx >= N || ny >= M)  continue;
                 if(visit[nx][ny]) continue;
                 if(a[nx].charAt(ny) == '0') continue;
 
+                que.add(nx);
+                que.add(ny);
+                visit[nx][ny] = true;
+                dist[nx][ny] = dist[x][y] + 1;  //거리(이동 횟수) 누적
 
             }
         }
@@ -66,10 +70,14 @@ public class BOJ2178 {
 
     static void solution() {
         bfs(0, 0);
+
+        //bfs 가 끝나면 dist의 도착지 좌표에는 이동 횟수가 생성되어있다.
+        System.out.println(dist[N-1][M-1]);
     }
 
 
-    public static void main(String[] args) {
-
+    public static void main(String[] args) throws IOException {
+        input();
+        solution();
     }
 }

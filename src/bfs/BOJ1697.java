@@ -40,21 +40,24 @@ public class BOJ1697 {
 
             //+1, -1, *2 상태 그래프 만들기
             int x1 = x + 1;
-            if (!(x1 > 100000)) {
+            if (!(x1 > 100000) && !visit[x1]) {
                 que.add(x1);
+                visit[x1] = true;
                 dist[x1] = dist[x] + 1;
             }
 
             int x2 = x - 1;
-            if(!(x2 < 0)) {
+            if(!(x2 < 0) && !visit[x2]) {
                 que.add(x2);
+                visit[x2] = true;
                 dist[x2] = dist[x] + 1;
             }
 
             int x3 = x * 2;
-            if (!(x3 > 100000)) {
+            if (!(x3 > 100000) && !visit[x3]) {
                 que.add(x3);
-                dist[x3] = dist[x] * 2;
+                visit[x3] = true;
+                dist[x3] = dist[x] + 1;
             }
         }
 

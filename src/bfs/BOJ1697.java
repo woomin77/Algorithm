@@ -60,9 +60,6 @@ public class BOJ1697 {
                 dist[x3] = dist[x] + 1;
             }
         }
-
-
-
     }
 
     static void solution() {

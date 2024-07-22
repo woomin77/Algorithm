@@ -71,13 +71,13 @@ public class BOJ3055 {
             }
         }
 
-        for (int i = 0; i < R; i++) {
-            for (int j = 0; j < C; j++) {
-                System.out.print(waterDist[i][j] + " ");
-            }
-            System.out.println();
-        }
-        System.out.println();
+//        for (int i = 0; i < R; i++) {
+//            for (int j = 0; j < C; j++) {
+//                System.out.print(waterDist[i][j] + " ");
+//            }
+//            System.out.println();
+//        }
+//        System.out.println();
     }
 
     static void sBfs(int x, int y) {
@@ -100,22 +100,24 @@ public class BOJ3055 {
                 if(a[nx].charAt(ny) == '*' || a[nx].charAt(ny) == 'X') continue;
 
                 //고슴도치 보다 물이 먼저 빈칸에 찰 수 있으면 패스
-                if(sDist[x][y]+1 >= waterDist[nx][ny]) continue;
-                sDist[nx][ny] = sDist[x][y] + 1;
+                if(waterDist[nx][ny] != 0 && sDist[x][y]+1 >= waterDist[nx][ny]) continue;
+
 
                 que.add(nx);
                 que.add(ny);
                 visit[nx][ny] = true;
+                sDist[nx][ny] = sDist[x][y] + 1;
+
 
             }
         }
 
-        for (int i = 0; i < R; i++) {
-            for (int j = 0; j < C; j++) {
-                System.out.print(sDist[i][j] + " ");
-            }
-            System.out.println();
-        }
+//        for (int i = 0; i < R; i++) {
+//            for (int j = 0; j < C; j++) {
+//                System.out.print(sDist[i][j] + " ");
+//            }
+//            System.out.println();
+//        }
     }
 
     static void solution() {

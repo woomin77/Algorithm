@@ -43,14 +43,11 @@ public class BOJ11725 {
     }
 
     static void dfs(int x, int parent) {
-        visit[x] = true;
 
+        //VISIT 체크를 굳이 안해줘도 됨!
         for (int i : adj[x]) {
             if(i == parent) continue;
-            if(visit[i]) continue;
-
             result[i].add(x);
-            visit[i] = true;
             dfs(i, x);
         }
     }

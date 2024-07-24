@@ -10,8 +10,8 @@ public class BOJ1068 {
 
     static int N, erase, root;
     static ArrayList<Integer>[] child;
-    static ArrayList<Integer> leaf = new ArrayList<>();
-
+//    static ArrayList<Integer> leaf = new ArrayList<>();
+    static int[] leaf;
 
     static int atoi(String st){
         return Integer.parseInt(st);
@@ -21,6 +21,7 @@ public class BOJ1068 {
         BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
         N = atoi(br.readLine());
         child = new ArrayList[N];
+        leaf = new int[N];
 
         for(int i=0; i<N; i++) child[i] = new ArrayList<>();
 
@@ -44,12 +45,16 @@ public class BOJ1068 {
 
         //Leaf node일 경우
         if (child[x].isEmpty()) {
-            leaf.add(x);
+//            leaf.add(x)
+
+            //DP로 구현
+            leaf[x]++;
         }
 
         for (int i : child[x]) {
             if(i==par) continue;
             dfs(i, x);
+            leaf[x] += leaf[i];
         }
 
     }
@@ -66,7 +71,8 @@ public class BOJ1068 {
         if(root != erase ) dfs(root, root);
 
 //        System.out.println(leaf);
-        System.out.println(leaf.size());
+//        System.out.println(leaf.size());
+        System.out.println(leaf[root]);
 
     }
 

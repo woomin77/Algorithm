@@ -43,6 +43,7 @@ public class BOJ2252 {
 
         que.add(1);
         que.add(2);
+        que.add(3);
 
 
         // 정렬될 수 있는 정점이 있다면?

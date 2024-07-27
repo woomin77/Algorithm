@@ -52,6 +52,8 @@ public class BOJ2252 {
         // 3. 새롭에 "정렬 될 수 있는" 정점
         /* TODO */
 
+        //commit test
+
     }
 
 

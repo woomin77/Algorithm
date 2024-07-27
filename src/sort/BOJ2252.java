@@ -7,6 +7,8 @@ import java.util.*;
 
 public class BOJ2252 {
 
+    static StringBuilder sb = new StringBuilder();
+
     static int N,M;
     static ArrayList<Integer>[] adj;
     static int[] inDegree; //진입차수 계산
@@ -40,24 +42,28 @@ public class BOJ2252 {
     static void solution() {
         Deque<Integer> que = new LinkedList<>();
         // 제일 앞에 "정렬될 수 있는" 정점 찾기
+        for (int i = 1; i <= N; i++) {
+            if (inDegree[i] == 0) {
+                que.add(i);
+            }
+        }
 
-        que.add(1);
-        que.add(2);
-        que.add(3);
+        while (!que.isEmpty()) {
+            int remove = que.poll();
+            sb.append(remove).append(' ');
 
+            for (int i : adj[remove]) {
+                inDegree[i]--;
+                if(inDegree[i]==0) que.add(i);
+            }
+        }
 
-        // 정렬될 수 있는 정점이 있다면?
-        // 1. 정렬 결과에 추가하기
-        // 2. 정점과 연결된 간선 제거하기
-        // 3. 새롭에 "정렬 될 수 있는" 정점
-        /* TODO */
-
-        //commit test
-
+        System.out.println(sb);
     }
 
 
-    public static void main(String[] args) {
-
+    public static void main(String[] args) throws IOException {
+        input();
+        solution();
     }
 }

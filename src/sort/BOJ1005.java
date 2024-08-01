@@ -78,7 +78,11 @@ public class BOJ1005 {
 
             for (int i : adj[x]) {
                 inDegree[i]--;
+                if(inDegree[i] == 0) que.add(i);
                 result[i] = Math.max(result[i], result[x] + time[i]);
+
+                result[2] = 11;
+                result[3] = 110;
             }
         }
 

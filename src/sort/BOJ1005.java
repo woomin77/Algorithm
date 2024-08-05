@@ -13,50 +13,45 @@ public class BOJ1005 {
     static int T, N, K, W;
     static int[] time, inDegree, result;
     static ArrayList<Integer>[] adj;
-
+    static BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
 
     static int atoi(String st) {
         return Integer.parseInt(st);
     }
 
     static void input() throws IOException {
-        BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
 
-        T = atoi(br.readLine());
+        //건물의 개수N, 건설 순서 규칙 개수 K
+        StringTokenizer st = new StringTokenizer(br.readLine());
+        N = atoi(st.nextToken());
+        K = atoi(st.nextToken());
+        time = new int[N + 1];
+        inDegree = new int[N + 1];
+        result = new int[N + 1];
+        adj = new ArrayList[N + 1];
 
-        for (int i = 1; i <= T; i++) {
-            //건물의 개수N, 건설 순서 규칙 개수 K
-            StringTokenizer st = new StringTokenizer(br.readLine());
-            N = atoi(st.nextToken());
-            K = atoi(st.nextToken());
-            time = new int[N + 1];
-            inDegree = new int[N + 1];
-            result = new int[N + 1];
+        //객체 초기화
+        for (int j = 0; j <= N; j++) adj[j] = new ArrayList<>();
 
-            //객체 초기화
-            for(int j=1; j<=N; j++) adj[j] = new ArrayList<>();
+        //건물당 건설에 걸리는 시간
+        st = new StringTokenizer(br.readLine());
+        for (int j = 1; j <= N; j++) time[j] = atoi(st.nextToken());
 
-            //건물당 건설에 걸리는 시간
+        //건설순서, 인접 리스트
+        for (int j = 1; j <= K; j++) {
             st = new StringTokenizer(br.readLine());
-            for(int j=1; j<=N; j++) time[i] = atoi(st.nextToken());
+            int x = atoi(st.nextToken());
+            int y = atoi(st.nextToken());
 
-            //건설순서, 인접 리스트
-            for(int j=1; j<=K; j++) {
-                st = new StringTokenizer(br.readLine());
-                int x = atoi(st.nextToken());
-                int y = atoi(st.nextToken());
-
-                adj[x].add(y);
-                inDegree[y]++;
-            }
-
-            //승리하기 위해 건설해야 할 건물의 번호
-            W = atoi(br.readLine());
-
-
-
+            adj[x].add(y);
+            inDegree[y]++;
         }
+
+        //승리하기 위해 건설해야 할 건물의 번호
+        W = atoi(br.readLine());
+
     }
+
 
     static void solution() {
         Queue<Integer> que = new LinkedList<>();
@@ -71,24 +66,28 @@ public class BOJ1005 {
         while (!que.isEmpty()) {
             int x = que.poll();
 
-//            1 2
-//            1 3
-//            2 4
-//            3 4
-
             for (int i : adj[x]) {
                 inDegree[i]--;
                 if(inDegree[i] == 0) que.add(i);
                 result[i] = Math.max(result[i], result[x] + time[i]);
 
-                result[2] = 11;
-                result[3] = 110;
+                //result2 = 0, 11 -> 11
+                //result3 = 0, 110 -> 110
+                //result4 = 0, 11 -> 21
+                //result4 = 21, 120 -> 120
             }
         }
 
+        System.out.println(result[W]);
     }
 
-    public static void main(String[] args) {
+    public static void main(String[] args) throws IOException {
+        T = atoi(br.readLine());
 
+        while (T > 0) {
+            T--;
+            input();
+            solution();
+        }
     }
 }

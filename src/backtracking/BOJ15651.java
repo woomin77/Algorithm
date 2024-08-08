@@ -32,16 +32,15 @@ public class BOJ15651 {
                 sb.append(selected[i]).append(' ');
             }
             sb.append('\n');
+            return;
         }
 
-        else {
             for(int i=1; i<=N; i++) {
                 selected[k] = i;
                 rec_func(k + 1);
                 selected[k] = 0;
             }
 
-        }
     }
 
 
